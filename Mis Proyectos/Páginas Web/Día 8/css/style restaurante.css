@@ -1,0 +1,19 @@
+ul li {
+    background-color: lightskyblue;
+}
+header {
+    background-color: rgba(115, 255, 0, 0.445);
+}
+footer{
+    background-color:rgba(0, 140, 255, 0.589);
+}
+body{
+    background: linear-gradient(rgb(111, 133, 50), rgb(0, 163, 192));
+}
+body{
+    font-family:'Times New Roman', Times, serif
+}
+header{
+    display: flex;
+    justify-content:right;
+}
