@@ -1,19 +1,218 @@
-ul li {
-    background-color: lightskyblue;
+/* Paleta de colores de restaurante de lujo: Negro azabache, Dorado, Blanco marfil y fondos suaves */
+:root {
+    --bg-dark: #0f1115;       /* Fondo refinado muy oscuro */
+    --panel-bg: #1a1d24;      /* Fondo de las secciones */
+    --gold: #d4af37;          /* Dorado elegante para destacar */
+    --gold-hover: #f3e5ab;    /* Dorado claro brillante */
+    --text-light: #f7f9fa;     /* Texto principal */
+    --text-muted: #a0aec0;     /* Texto secundario */
+    --border-gold: rgba(212, 175, 55, 0.2);
 }
-header {
-    background-color: rgba(115, 255, 0, 0.445);
+
+/* Reset de márgenes y caja */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-footer{
-    background-color:rgba(0, 140, 255, 0.589);
-}
-body{
-    background: linear-gradient(rgb(111, 133, 50), rgb(0, 163, 192));
-}
-body{
-    font-family:'Times New Roman', Times, serif
-}
-header{
+
+body {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
     display: flex;
-    justify-content:right;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Encabezado / Header de lujo */
+header {
+    background-color: #07080a;
+    border-bottom: 1px solid var(--border-gold);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+header #logo img {
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+    transition: transform 0.3s ease;
+}
+
+header #logo img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+header div {
+    text-align: left;
+}
+
+header h6 {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    color: var(--text-light);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+/* Contenedor principal del Menú gastronómico */
+main {
+    flex: 1;
+    max-width: 1200px;
+    width: 90%;
+    margin: 4rem auto;
+    background-color: var(--panel-bg);
+    padding: 3.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-gold);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    
+    /* Sistema Flexbox para ordenar tu HTML actual */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem 1.5rem;
+}
+
+/* Títulos de Categoría (Cartelera dorada) */
+main h2 {
+    flex: 1 0 100%;
+    font-size: 1.8rem;
+    color: var(--gold);
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--border-gold);
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+main h2:first-of-type {
+    margin-top: 0;
+}
+
+/* EL CAMBIO CLAVE: Cuidado absoluto de las fotos (¡No más efecto meme!) */
+main img {
+    width: calc(25% - 1.2rem); /* Organiza sutilmente en columnas en pantallas grandes */
+    min-width: 180px;
+    height: 180px !important;
+    
+    /* Solución radical a la deformación */
+    object-fit: contain !important; /* Mantiene la proporción original exacta de la imagen sin estirar */
+    background-color: #12141a;       /* Fondo oscuro suave para rellenar los espacios vacíos del contenedor */
+    
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 4px;
+    padding: 6px; /* Efecto cuadro de museo */
+    transition: all 0.3s ease;
+}
+
+main img:hover {
+    border-color: var(--gold);
+    background-color: #0f1115;
+    transform: translateY(-3px);
+}
+
+/* Nombres de platos y Precios de alta cocina */
+main p {
+    width: calc(25% - 1.2rem);
+    min-width: 180px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column; /* Coloca el precio justo debajo del nombre */
+    justify-content: center;
+    font-weight: 300;
+    padding: 0 0.5rem;
+    border-left: 2px solid transparent;
+    transition: border-color 0.3s;
+    margin-bottom: 1rem;
+}
+
+/* Transición elegante al pasar sobre el texto */
+main p:hover {
+    border-left-color: var(--gold);
+}
+
+/* Formateo del precio para que se vea costoso y destacado */
+main p {
+    /* Si tu texto tiene un ';' dividiendo el nombre del precio, este truco lo limpia visualmente */
+    letter-spacing: 0.5px;
+}
+
+/* Pie de página / Footer */
+footer {
+    background-color: #07080a;
+    border-top: 1px solid var(--border-gold);
+    padding: 2.5rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer h3 {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+footer a {
+    display: inline-block;
+    margin: 0 1rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: grayscale(100%) brightness(0.8); /* Redes sociales en modo sobrio */
+}
+
+footer a:hover {
+    transform: translateY(-3px);
+    filter: grayscale(0%) brightness(1); /* Recuperan color al interactuar */
+}
+
+/* Evita que los logos del footer hereden el comportamiento de los platos */
+footer img {
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Responsive para celulares: Todo en una columna perfecta */
+@media (max-width: 768px) {
+    main {
+        padding: 2rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    main img, main p {
+        width: 100% !important;
+        max-width: 280px;
+        text-align: center;
+    }
+    main p {
+        margin-bottom: 2rem;
+        align-items: center;
+        border-left: none;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        padding-bottom: 1rem;
+    }
 }

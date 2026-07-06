@@ -1,0 +1,210 @@
+/* Variables de diseño para mantener la consistencia visual */
+:root {
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    --primary: #0056b3;
+    --primary-hover: #003d82;
+    --border-color: #e2e8f0;
+    --focus-ring: rgba(0, 86, 179, 0.2);
+}
+
+/* Reset general */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Encabezado / Header */
+header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+header #logo img {
+    transition: transform 0.2s;
+    object-fit: contain;
+}
+
+header #logo img:hover {
+    transform: scale(1.05);
+}
+
+header div {
+    text-align: left;
+}
+
+header h6 {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Contenedor del Formulario */
+main {
+    flex: 1;
+    max-width: 550px;
+    width: 90%;
+    margin: 3rem auto;
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para etiquetas y campos de entrada de texto/número/fecha */
+main label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--text-main);
+}
+
+main input[type="text"],
+main input[type="number"],
+main input[type="date"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: #fafafa;
+    margin-bottom: 1.25rem;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+main input[type="text"]:focus,
+main input[type="number"]:focus,
+main input[type="date"]:focus {
+    border-color: var(--primary);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Estilo específico para la sección de términos (Checkbox) */
+main input[type="checkbox"] {
+    margin-right: 0.5rem;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* Hace que la etiqueta del checkbox se alinee en la misma línea */
+main input[type="checkbox"] + br, 
+main label:has(+ input[type="checkbox"]) {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+/* Sección de Género (Radio Buttons) */
+main label[for="género"] {
+    margin-top: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+main input[type="radio"] {
+    margin-right: 0.5rem;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* Estilo para las etiquetas de cada opción de radio */
+main input[type="radio"] + label {
+    display: inline-block;
+    font-weight: 400;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+}
+
+/* Botón de Envío */
+main button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 0.9rem;
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 86, 179, 0.15);
+    transition: all 0.2s ease;
+    margin-top: 1.5rem;
+}
+
+main button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.2);
+}
+
+main button[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+/* Pie de página / Footer */
+footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer h3 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+footer a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+footer a:hover {
+    transform: scale(1.15);
+}
+
+footer img {
+    display: block;
+}

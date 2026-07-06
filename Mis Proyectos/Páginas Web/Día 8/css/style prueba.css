@@ -1,0 +1,208 @@
+/* Paleta con color de verdad: Fondo crema cálido, tarjetas blancas y acentos rojos pro */
+:root {
+    --bg-color: #f4f0ea; /* Un color arena/crema re fino que le da personalidad al fondo */
+    --card-bg: #ffffff; /* Tarjetas blancas limpias para que resalten */
+    --text-main: #2b2621; /* Un marrón oscuro/casi negro para que combine con el fondo */
+    --text-muted: #7a7065; /* Gris amarronado para los textos secundarios */
+    --primary: #ff0000; /* El rojo picante de YouTube que no puede faltar */
+    --border-color: #e2dacb; /* Bordes en la misma gama para que quede fino */
+}
+
+/* Reset general de toque */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Encabezado unificado con el nuevo fondo */
+header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    box-shadow: 0 2px 8px rgba(43, 38, 33, 0.05);
+}
+
+header #logo img {
+    transition: transform 0.2s ease;
+    object-fit: contain;
+}
+
+header #logo img:hover {
+    transform: scale(1.05);
+}
+
+header div {
+    text-align: left;
+}
+
+header h6 {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    color: var(--primary); /* Título en rojo pro */
+    font-weight: 600;
+}
+
+/* Contenedor del Tutorial (La lista ordenada) */
+main {
+    flex: 1;
+    max-width: 700px;
+    width: 90%;
+    margin: 3rem auto;
+}
+
+/* Estilo para la lista de pasos */
+main ol {
+    list-style: none;
+    counter-reset: pasos-counter;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Cada ítem de la lista se vuelve una tarjeta elegante */
+main ol li {
+    counter-increment: pasos-counter;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-main);
+    box-shadow: 0 4px 10px rgba(43, 38, 33, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* El número gigante y estilizado antes del texto */
+main ol li::before {
+    content: counter(pasos-counter);
+    background-color: var(--primary);
+    color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Trato profesional para las imágenes de guía */
+main ol img {
+    display: block;
+    width: 100% !important;
+    max-width: 400px;
+    height: auto !important;
+    margin: -0.5rem auto 1.5rem auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(43, 38, 33, 0.06);
+    object-fit: contain;
+    background-color: #ffffff;
+}
+
+/* Pie de página / Footer */
+footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer h3 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+footer a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+footer a:hover {
+    transform: scale(1.15);
+}
+
+/* Reset para las redes del footer */
+footer img {
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE PARA PANTALLAS CHICAS (No rompe ni ahí)
+   ========================================================================== */
+
+/* --- TABLETS Y CELULARES --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+        padding: 1.25rem;
+    }
+
+    header div {
+        text-align: center;
+    }
+
+    header h6 {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    main {
+        margin: 1.5rem auto;
+    }
+
+    main ol li {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    main ol img {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,15 @@
+header{
+    border-radius: 10px 10px 10px 10px;
+    background-color: rgb(62, 139, 255);
+    display: flex;
+    justify-content: right;
+}
+footer{
+    border: solid 5px rgb(68, 31, 0); 
+    border-radius: 10px 10px 10px 10px;
+    background-color:rgba(168, 0, 0, 0.849)
+}
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: linear-gradient(rgba(0, 162, 255, 0.555), rgba(143, 0, 0, 0.486));
+}

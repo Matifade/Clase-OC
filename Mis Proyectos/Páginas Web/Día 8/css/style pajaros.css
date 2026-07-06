@@ -1,19 +1,208 @@
-ul li {
-    background-color: lightskyblue;
+:root {
+    --bg-color: #f4f6f8;
+    --card-bg: #ffffff;
+    --text-main: #1a202c;
+    --text-muted: #718096;
+    --primary: #2f855a; /* Verde naturaleza elegante */
+    --border-color: #e2e8f0;
 }
-header {
-    background-color: rgba(255, 235, 205, 0.63);
+
+/* Reset general */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-footer{
-    background-color:rgba(92, 44, 0, 0.589);
-}
-body{
-    background: linear-gradient(rgb(79, 112, 0), rgb(150, 90, 0));
-}
-body{
-    font-family:'Times New Roman', Times, serif
-}
-header{
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
     display: flex;
-    justify-content:right;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Encabezado unificado para mantener la marca corporativa */
+header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+header #logo img {
+    transition: transform 0.2s ease;
+    object-fit: contain;
+}
+
+header #logo img:hover {
+    transform: scale(1.05);
+}
+
+header div {
+    text-align: left;
+}
+
+header h6 {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Contenedor de la Galería de Fotos */
+main {
+    flex: 1;
+    max-width: 1200px;
+    width: 90%;
+    margin: 3rem auto;
+    
+    /* Grid moderno y totalmente automático */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Tratamiento profesional para cada imagen del álbum */
+main img {
+    width: 100% !important; /* Ignora el width="160" antiguo del HTML */
+    height: 200px !important; /* Ignora el height="120" antiguo del HTML */
+    
+    /* El truco de magia: llena el espacio perfectamente sin estirar ni deformar al pájaro */
+    object-fit: cover; 
+    
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.3s ease;
+}
+
+/* Efecto interactivo premium al pasar el ratón */
+main img:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+/* Pie de página / Footer */
+footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer h3 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+footer a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+footer a:hover {
+    transform: scale(1.15);
+}
+
+/* Evita que los logos de las redes sociales hereden el estilo gigante de las aves */
+footer img {
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+}
+
+/* ==========================================================================
+   NUEVOS ESTILOS RESPONSIVOS (Para no romper nada)
+   ========================================================================== */
+
+/* --- TABLETS (Pantallas menores a 768px) --- */
+@media (max-width: 768px) {
+    header {
+        padding: 1.25rem;
+        gap: 1.25rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem; /* Ajustamos ligeramente el tamaño del título */
+    }
+
+    main {
+        margin: 2rem auto;
+        /* Hacemos las columnas de fotos un poco más chicas para que entren bien de a dos o tres */
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    main img {
+        height: 160px !important; /* Altura ideal para pantallas medianas */
+    }
+}
+
+/* --- CELULARES (Pantallas menores a 480px) --- */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column; /* Apilamos el logo arriba y el texto abajo */
+        text-align: center;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    header div {
+        text-align: center; /* Centramos los textos en mobile */
+    }
+
+    header h6 {
+        font-size: 0.7rem; /* Reducimos el menú largo de arriba para que no colapse feo */
+        line-height: 1.4;
+    }
+
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    main {
+        width: 92%;
+        margin: 1.5rem auto;
+        /* En celulares chicos, las fotos se verán en dos columnas perfectas */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    main img {
+        height: 130px !important; /* Altura optimizada para que entren de a dos en pantalla sin scrollear infinito */
+    }
+    
+    /* Desactivamos el efecto hover "scale" en celular porque no hay mouse y puede ser molesto al tocar con el dedo */
+    main img:hover {
+        transform: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    }
 }
