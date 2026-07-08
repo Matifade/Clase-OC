@@ -1,10 +1,11 @@
+/* Paleta Naturaleza: Header/Footer verde claro, Main verde oscuro con patrón de hojas */
 :root {
-    --bg-color: #f4f6f8;
-    --card-bg: #ffffff;
-    --text-main: #1a202c;
-    --text-muted: #718096;
-    --primary: #2f855a; /* Verde naturaleza elegante */
-    --border-color: #e2e8f0;
+    --hf-bg: #d1e7dd; /* Verde claro/pastel para header y footer */
+    --hf-text: #0f5132; /* Verde muy oscuro para los textos y un buen contraste */
+    --hf-muted: #4e8666; /* Verde grisáceo para los textos secundarios */
+    --main-bg: #144023; /* Verde oscuro bosque para el fondo principal */
+    --card-bg: #ffffff; /* Blanco para que las fotos resalten */
+    --border-color: #a3cfbb; /* Borde verde suave */
 }
 
 /* Reset general */
@@ -16,29 +17,29 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
+    color: var(--hf-text);
     line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Encabezado unificado para mantener la marca corporativa */
+/* --- ENCABEZADO --- */
 header {
-    background-color: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
+    background-color: var(--hf-bg);
+    border-bottom: 2px solid var(--border-color);
     padding: 1.5rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header #logo img {
     transition: transform 0.2s ease;
     object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(15, 81, 50, 0.2));
 }
 
 header #logo img:hover {
@@ -51,60 +52,64 @@ header div {
 
 header h6 {
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: var(--hf-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 0.25rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 header h1 {
     font-size: 1.75rem;
-    color: var(--primary);
-    font-weight: 600;
+    color: var(--hf-text);
+    font-weight: 700;
 }
 
-/* Contenedor de la Galería de Fotos */
+/* --- CONTENEDOR PRINCIPAL (Fondo Oscuro con Hojas) --- */
 main {
     flex: 1;
-    max-width: 1200px;
-    width: 90%;
-    margin: 3rem auto;
+    width: 100%; /* Ocupa todo el ancho disponible para mostrar bien el patrón */
+    padding: 3rem 5%; /* Espaciado interno para contener la grilla */
     
-    /* Grid moderno y totalmente automático */
+    /* El fondo verde oscuro */
+    background-color: var(--main-bg);
+    
+    /* Patrón SVG codificado directamente en CSS para crear hojas de árbol superpuestas */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 50 Q 50 10, 90 50 Q 50 90, 10 50 Z' fill='%231b522b' fill-opacity='0.6'/%3E%3Cpath d='M10 50 Q 50 10, 90 50 Q 50 90, 10 50 Z' fill='%2310331c' fill-opacity='0.5' transform='rotate(45 50 50) scale(0.7)'/%3E%3C/svg%3E");
+    background-size: 120px 120px;
+    
+    /* Grid automático para las fotos */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1.5rem;
+    align-content: start; /* Evita que las fotos se estiren si hay pocas */
 }
 
-/* Tratamiento profesional para cada imagen del álbum */
+/* Tratamiento para cada imagen del álbum */
 main img {
-    width: 100% !important; /* Ignora el width="160" antiguo del HTML */
-    height: 200px !important; /* Ignora el height="120" antiguo del HTML */
-    
-    /* El truco de magia: llena el espacio perfectamente sin estirar ni deformar al pájaro */
+    width: 100% !important; 
+    height: 200px !important; 
     object-fit: cover; 
-    
     background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    border: 3px solid var(--hf-bg); /* Borde verde claro para que resalten sobre el fondo oscuro */
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                box-shadow 0.3s ease;
+                box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Efecto interactivo premium al pasar el ratón */
+/* Efecto interactivo al pasar el ratón */
 main img:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
-    border-color: var(--primary);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+    border-color: #ffffff; /* El borde se ilumina en blanco al interactuar */
 }
 
-/* Pie de página / Footer */
+/* --- PIE DE PÁGINA --- */
 footer {
-    background-color: var(--card-bg);
-    border-top: 1px solid var(--border-color);
+    background-color: var(--hf-bg);
+    border-top: 2px solid var(--border-color);
     padding: 2rem;
     text-align: center;
     margin-top: auto;
@@ -112,7 +117,7 @@ footer {
 
 footer h3 {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--hf-muted);
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -128,7 +133,6 @@ footer a:hover {
     transform: scale(1.15);
 }
 
-/* Evita que los logos de las redes sociales hereden el estilo gigante de las aves */
 footer img {
     width: 30px !important;
     height: 30px !important;
@@ -137,10 +141,11 @@ footer img {
     box-shadow: none !important;
     border-radius: 0 !important;
     transform: none !important;
+    filter: drop-shadow(0 2px 4px rgba(15, 81, 50, 0.2));
 }
 
 /* ==========================================================================
-   NUEVOS ESTILOS RESPONSIVOS (Para no romper nada)
+   DISEÑO RESPONSIVO
    ========================================================================== */
 
 /* --- TABLETS (Pantallas menores a 768px) --- */
@@ -151,36 +156,35 @@ footer img {
     }
 
     header h1 {
-        font-size: 1.5rem; /* Ajustamos ligeramente el tamaño del título */
+        font-size: 1.5rem; 
     }
 
     main {
-        margin: 2rem auto;
-        /* Hacemos las columnas de fotos un poco más chicas para que entren bien de a dos o tres */
+        padding: 2rem 5%;
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: 1rem;
     }
 
     main img {
-        height: 160px !important; /* Altura ideal para pantallas medianas */
+        height: 160px !important; 
     }
 }
 
 /* --- CELULARES (Pantallas menores a 480px) --- */
 @media (max-width: 480px) {
     header {
-        flex-direction: column; /* Apilamos el logo arriba y el texto abajo */
+        flex-direction: column; 
         text-align: center;
         gap: 0.75rem;
         padding: 1rem;
     }
 
     header div {
-        text-align: center; /* Centramos los textos en mobile */
+        text-align: center; 
     }
 
     header h6 {
-        font-size: 0.7rem; /* Reducimos el menú largo de arriba para que no colapse feo */
+        font-size: 0.7rem; 
         line-height: 1.4;
     }
 
@@ -189,20 +193,18 @@ footer img {
     }
 
     main {
-        width: 92%;
-        margin: 1.5rem auto;
-        /* En celulares chicos, las fotos se verán en dos columnas perfectas */
+        padding: 1.5rem 5%;
         grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
     }
 
     main img {
-        height: 130px !important; /* Altura optimizada para que entren de a dos en pantalla sin scrollear infinito */
+        height: 130px !important; 
+        border-width: 2px; /* Borde ligeramente más fino en celulares */
     }
     
-    /* Desactivamos el efecto hover "scale" en celular porque no hay mouse y puede ser molesto al tocar con el dedo */
     main img:hover {
         transform: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
     }
 }

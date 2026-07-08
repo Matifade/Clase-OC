@@ -1,15 +1,190 @@
-header{
-    border-radius: 10px 10px 10px 10px;
-    background-color: rgb(62, 139, 255);
+/* ==========================================================================
+   NUEVO DISEÑO ARTEMIS II - DESDE CERO
+   ========================================================================== */
+
+:root {
+    --bg-space: #060b13; /* Fondo negro azulado bien profundo */
+    --cartel-bg: #1e3a8a; /* Azul espacial fuerte para los carteles */
+    --cartel-border: #60a5fa; /* Celeston brillante para que el cartel resalte */
+    --text-main: #ffffff; /* Texto re nítido */
+    --text-muted: #9ca3af; /* Gris para textos secundarios */
+}
+
+/* Reset de una */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-main);
     display: flex;
-    justify-content: right;
+    flex-direction: column;
+    min-height: 100vh;
+    
+    /* FONDO ESTRELLADO PIOLA */
+    background-color: var(--bg-space);
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.3) 1px, transparent 30px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 40px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 50px);
+    background-size: 450px 450px, 300px 300px, 200px 200px;
+    background-position: 0 0, 40px 60px, 150px 250px;
 }
-footer{
-    border: solid 5px rgb(68, 31, 0); 
-    border-radius: 10px 10px 10px 10px;
-    background-color:rgba(168, 0, 0, 0.849)
+
+/* --- HEADER Y FOOTER (SIMILARES, PERO NO IGUALES A LOS ANTERIORES) --- */
+/* Le metí un degradado en vez de un color liso y una barrita de color neón abajo/arriba */
+header, footer {
+    background: linear-gradient(180deg, #111827, #1f2937); 
+    padding: 1.5rem 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
 }
-body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background: linear-gradient(rgba(0, 162, 255, 0.555), rgba(143, 0, 0, 0.486));
+
+header {
+    border-bottom: 3px solid var(--cartel-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+header #logo img {
+    transition: transform 0.2s ease;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+header #logo img:hover {
+    transform: scale(1.05);
+}
+
+header div {
+    text-align: left;
+}
+
+header h6 {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: var(--cartel-border); /* Celeste brillante para el título principal */
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- MAIN Y ESTRUCTURA DE VIDEOS --- */
+main {
+    flex: 1;
+    width: 90%;
+    max-width: 800px; /* Contenedor centrado */
+    margin: 3rem auto;
+}
+
+/* Como el HTML tiene los 'li' y los 'iframe' sueltos en el 'ul', los apilamos de forma inteligente */
+main ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Todo centrado */
+    gap: 1.5rem;
+}
+
+/* --- LOS CARTELES "Video 1:" y "Video 2:" --- */
+main ul li {
+    background-color: var(--cartel-bg);
+    color: var(--text-main);
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 0.6rem 2rem;
+    border: 2px solid var(--cartel-border);
+    border-radius: 8px;
+    /* Sombras para que parezca un cartel flotando y no se fusione con las estrellas */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(96, 165, 250, 0.4);
+    margin-top: 2rem; /* Separa un video del cartel que le sigue */
+}
+
+/* El primer cartel no necesita separación arriba */
+main ul li:first-child {
+    margin-top: 0;
+}
+
+/* --- LOS REPRODUCTORES DE VIDEO --- */
+main iframe {
+    width: 100% !important;
+    max-width: 650px; /* En compu no se hacen gigantescos */
+    height: 350px !important;
+    border-radius: 12px;
+    border: 1px solid #374151;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    background-color: #000;
+}
+
+/* --- FOOTER --- */
+footer {
+    border-top: 3px solid var(--cartel-border);
+    text-align: center;
+    margin-top: auto;
+}
+
+footer h3 {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    letter-spacing: 1.5px;
+}
+
+footer a {
+    display: inline-block;
+    margin: 0 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+footer a:hover {
+    transform: scale(1.2) translateY(-3px);
+}
+
+footer img {
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* ==========================================================================
+   RESPONSIVE PARA CELULARES
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+
+    header div {
+        text-align: center;
+    }
+
+    header h6 {
+        font-size: 0.7rem;
+        line-height: 1.5;
+    }
+
+    main ul li {
+        font-size: 1rem; /* Cartelitos más ajustados para el celu */
+        padding: 0.5rem 1.5rem;
+    }
+
+    main iframe {
+        height: 220px !important; /* Altura perfecta para que no se corte en móvil */
+    }
 }

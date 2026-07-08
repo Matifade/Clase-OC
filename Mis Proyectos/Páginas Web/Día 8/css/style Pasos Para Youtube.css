@@ -1,16 +1,222 @@
-header{
-    background-color: rgb(167, 0, 0);
-    border-radius: 10px 10px 10px 10px;
-    display: flex;
-    justify-content:center;
+/* Paleta YouTube: Header/Footer rojo claro, Main rojo profundo con patrón de logos */
+:root {
+    --hf-bg: #fee2e2; /* Rojo clarito/pastel para header y footer */
+    --hf-text: #7f1d1d; /* Rojo muy oscuro para los textos */
+    --hf-muted: #991b1b; /* Rojo oscuro intermedio para textos secundarios */
+    --main-bg: #7f1d1d; /* Rojo profundo para el fondo principal */
+    --card-bg: #ffffff; /* Tarjetas blancas para los pasos */
+    --border-color: #fca5a5; /* Borde rojo suave */
 }
-body{
-    background: linear-gradient(rgba(255, 0, 0, 0.808), rgb(255, 255, 255));
-    font-family: Verdana, Geneva, Tahoma, sans-serif
 
+/* Reset general */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-footer{
-    border: solid 3px red;
-    background-color: rgba(255, 255, 255, 0.788);
-    border-radius: 10px 10px 10px 10px;
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--hf-text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--hf-bg);
+}
+
+/* --- ENCABEZADO --- */
+header {
+    background-color: var(--hf-bg);
+    border-bottom: 2px solid var(--border-color);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}
+
+header #logo img {
+    transition: transform 0.2s ease;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(127, 29, 29, 0.2));
+}
+
+header #logo img:hover {
+    transform: scale(1.05);
+}
+
+header div {
+    text-align: left;
+}
+
+header h6 {
+    font-size: 0.8rem;
+    color: var(--hf-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    color: var(--hf-text);
+    font-weight: 700;
+}
+
+/* --- CONTENEDOR PRINCIPAL (Fondo Oscuro con Logos de YouTube) --- */
+main {
+    flex: 1;
+    width: 100%;
+    padding: 3rem 5%;
+    
+    /* Fondo rojo profundo */
+    background-color: var(--main-bg);
+    
+    /* Patrón SVG codificado en CSS para crear botones de "Play" superpuestos */
+    background-image: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect x='20' y='30' width='60' height='40' rx='10' fill='%23ffffff' fill-opacity='0.06'/%3E%3Cpolygon points='45,42 45,58 58,50' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect x='20' y='30' width='60' height='40' rx='10' fill='%23ffffff' fill-opacity='0.04'/%3E%3Cpolygon points='45,42 45,58 58,50' fill='%23ffffff' fill-opacity='0.04'/%3E%3C/svg%3E");
+    background-position: 0 0, 50px 50px;
+    background-size: 120px 120px;
+}
+
+/* Estructura centralizada para los pasos */
+main ol {
+    list-style: none;
+    counter-reset: pasos-counter;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Cada ítem de la lista se vuelve una tarjeta elegante */
+main ol li {
+    counter-increment: pasos-counter;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--hf-text);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* El número gigante y estilizado antes del texto */
+main ol li::before {
+    content: counter(pasos-counter);
+    background-color: var(--main-bg);
+    color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Tratamiento para las imágenes de guía */
+main ol img {
+    display: block;
+    width: 100% !important;
+    max-width: 400px;
+    height: auto !important;
+    margin: -0.5rem auto 1.5rem auto;
+    border: 2px solid var(--hf-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    object-fit: contain;
+    background-color: var(--card-bg);
+}
+
+/* --- PIE DE PÁGINA --- */
+footer {
+    background-color: var(--hf-bg);
+    border-top: 2px solid var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+    z-index: 10;
+}
+
+footer h3 {
+    font-size: 0.85rem;
+    color: var(--hf-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+footer a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+footer a:hover {
+    transform: scale(1.15);
+}
+
+footer img {
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    filter: drop-shadow(0 2px 4px rgba(127, 29, 29, 0.2));
+}
+
+/* ==========================================================================
+   DISEÑO RESPONSIVO
+   ========================================================================== */
+
+/* --- TABLETS --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+        padding: 1.25rem;
+    }
+
+    header div {
+        text-align: center;
+    }
+
+    header h6 {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    main {
+        padding: 2rem 5%;
+    }
+
+    main ol li {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    main ol img {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
 }
