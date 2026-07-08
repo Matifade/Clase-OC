@@ -34,23 +34,24 @@ body {
     background-position: 0 0, 40px 60px, 150px 250px;
 }
 
-/* --- HEADER Y FOOTER (SIMILARES, PERO NO IGUALES A LOS ANTERIORES) --- */
-/* Le metí un degradado en vez de un color liso y una barrita de color neón abajo/arriba */
-header, footer {
-    background: linear-gradient(180deg, #111827, #1f2937); 
-    padding: 1.5rem 2rem;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
-}
-
+/* --- HEADER NORMALIZADO --- */
 header {
+    background: linear-gradient(180deg, #111827, #1f2937); 
+    height: 100px;
+    padding: 0 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
     border-bottom: 3px solid var(--cartel-border);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    position: relative;
+    z-index: 10;
 }
 
 header #logo img {
+    height: 60px !important;
+    width: auto !important;
     transition: transform 0.2s ease;
     object-fit: contain;
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
@@ -69,34 +70,42 @@ header h6 {
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.1rem;
 }
 
 header h1 {
     font-size: 1.8rem;
-    color: var(--cartel-border); /* Celeste brillante para el título principal */
+    color: var(--cartel-border); 
     font-weight: bold;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    line-height: 1.2;
 }
 
-/* --- MAIN Y ESTRUCTURA DE VIDEOS --- */
+/* --- FOOTER Y RESTO DEL CONTENIDO --- */
+footer {
+    background: linear-gradient(180deg, #111827, #1f2937); 
+    padding: 1.5rem 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+    border-top: 3px solid var(--cartel-border);
+    text-align: center;
+    margin-top: auto;
+}
+
 main {
     flex: 1;
     width: 90%;
-    max-width: 800px; /* Contenedor centrado */
+    max-width: 800px; 
     margin: 3rem auto;
 }
 
-/* Como el HTML tiene los 'li' y los 'iframe' sueltos en el 'ul', los apilamos de forma inteligente */
 main ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Todo centrado */
+    align-items: center; 
     gap: 1.5rem;
 }
 
-/* --- LOS CARTELES "Video 1:" y "Video 2:" --- */
 main ul li {
     background-color: var(--cartel-bg);
     color: var(--text-main);
@@ -107,32 +116,22 @@ main ul li {
     padding: 0.6rem 2rem;
     border: 2px solid var(--cartel-border);
     border-radius: 8px;
-    /* Sombras para que parezca un cartel flotando y no se fusione con las estrellas */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(96, 165, 250, 0.4);
-    margin-top: 2rem; /* Separa un video del cartel que le sigue */
+    margin-top: 2rem; 
 }
 
-/* El primer cartel no necesita separación arriba */
 main ul li:first-child {
     margin-top: 0;
 }
 
-/* --- LOS REPRODUCTORES DE VIDEO --- */
 main iframe {
     width: 100% !important;
-    max-width: 650px; /* En compu no se hacen gigantescos */
+    max-width: 650px; 
     height: 350px !important;
     border-radius: 12px;
     border: 1px solid #374151;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     background-color: #000;
-}
-
-/* --- FOOTER --- */
-footer {
-    border-top: 3px solid var(--cartel-border);
-    text-align: center;
-    margin-top: auto;
 }
 
 footer h3 {
@@ -159,15 +158,14 @@ footer img {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-/* ==========================================================================
-   RESPONSIVE PARA CELULARES
-   ========================================================================== */
-
 @media (max-width: 768px) {
     header {
+        height: auto;
+        min-height: 100px;
         flex-direction: column;
         text-align: center;
-        padding: 1.5rem 1rem;
+        padding: 1rem;
+        gap: 0.5rem;
     }
 
     header div {
@@ -176,15 +174,18 @@ footer img {
 
     header h6 {
         font-size: 0.7rem;
-        line-height: 1.5;
+    }
+    
+    header h1 {
+        font-size: 1.4rem;
     }
 
     main ul li {
-        font-size: 1rem; /* Cartelitos más ajustados para el celu */
+        font-size: 1rem; 
         padding: 0.5rem 1.5rem;
     }
 
     main iframe {
-        height: 220px !important; /* Altura perfecta para que no se corte en móvil */
+        height: 220px !important; 
     }
 }
